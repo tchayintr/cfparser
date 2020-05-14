@@ -1,5 +1,5 @@
 # Yet another syntactic parser built for Thai
-### **[CFparser.org](https://cfparser.org)**
+### **[CFParser.org](https://cfparser.org)**
 
 CF stands for Cassia fistula, the national tree and national flower of Thailand. We originally aim to annotate syntactic trees for Thai language by composing a metaphor that we are planting trees for our nation towards Thai Computational Linguistics advancement.
 

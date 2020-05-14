@@ -1,5 +1,0 @@
-lowercasing=False
-normalize_digits=False
-parsing_model=viterbi
-segmentation_model=deepcut
-tagging_model=artagger

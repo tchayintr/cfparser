@@ -1,3 +1,0 @@
-parsing_model=viterbi
-segmentation_model=wordcut
-tagging_model=artagger

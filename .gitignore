@@ -3,7 +3,7 @@
 data/*
 log/*
 models/main/*
-models/parameters/*
+models/parameter/*
 
 # files
 ######################
