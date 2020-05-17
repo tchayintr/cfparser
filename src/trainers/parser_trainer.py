@@ -96,18 +96,22 @@ class ParserTrainer(ParserTrainerBase):
 
     def update_grammars(self):
         input_data = self.input_data
-        segmented_data = self.core.segmenter(input_data)
+        if self.args.task == constants.TASK_TAGPARSE or self.args.task == constants.TASK_TAG:
+            segmented_data = input_data
+        else:
+            segmented_data = self.core.segmenter(input_data)
         tagged_data = self.core.tagger(segmented_data)
 
         sample_data = self.gen_sample_data(
             tagged_data,
-            constants.ROOT_NONTERMINAL
+            constants.UNUSED_NONTERMINAL,
         )
 
         sample_tree = self.data_loader.convert_to_tree(
             sample_data,
             self.args.brackets_format
         )
+
         self.core.trees.append(sample_tree)
         self.train = self.gen_grammars(self.core.trees, constants.PCFG_FORMAT)
 
@@ -136,7 +140,7 @@ class ParserTrainer(ParserTrainerBase):
     def gen_sample_data(self, data, root):
         brackets_format_l = self.args.brackets_format[0]
         brackets_format_r = self.args.brackets_format[1]
-        return '{}{}{}{}'.format(brackets_format_l, root, data, brackets_format_r)
+        return constants.SAMPLE_FORMAT.format(brackets_format_l, root, data, brackets_format_r)
 
 
     def gen_sample_grammars(self, productions):
@@ -168,12 +172,12 @@ class ParserTrainer(ParserTrainerBase):
 
         if self.args.task == constants.TASK_SEG:
             segmented_data = segmenter(input_data)
-            return segmented_data
+            res = segmented_data
 
         elif self.args.task == constants.TASK_SEGTAG:
             segmented_data = segmenter(input_data)
             tagged_data = tagger(segmented_data)
-            return tagged_data
+            res = tagged_data
 
         elif self.args.task == constants.TASK_SEGTAGPARSE:
             segmented_data = segmenter(input_data)
@@ -183,24 +187,30 @@ class ParserTrainer(ParserTrainerBase):
                     parsed_data.pformat(parens=self.args.brackets_format),
                     parsed_data.prob()
                 )
-            return parsed_tree
+            res = parsed_tree
 
         elif self.args.task == constants.TASK_TAG:
             tagged_data = tagger(input_data)
-            return tagged_data
+            res = tagged_data
 
         elif self.args.task == constants.TASK_TAGPARSE:
             sample_data = input_data.split()
             for parsed_data in parser.parse(sample_data):
-                parsed_tree = '{}▁{}'.format(
+                parsed_tree = '{}{}{}'.format(
                     parsed_data.pformat(parens=self.args.brackets_format),
+                    constants.DELIMITER_PROB,
                     parsed_data.prob()
                 )
-            return parsed_tree
+            res = parsed_tree
 
         elif self.args.task == constants.TASK_PARSE:
             # Do not support
             pass
+
+        self.log('{}{}{}'.format(input_data, constants.DELIMITER_PARSED_TREE, res))
+        self.report('{}{}{}'.format(input_data, constants.DELIMITER_PARSED_TREE, res))
+
+        return res
 
 
     def run_interactive_mode(self):

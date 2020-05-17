@@ -7,7 +7,8 @@ class CFCore(object):
         segmenter_model=None,
         tagger_model=None,
         parser_model=None,
-        trees=None
+        trees=None,
+        brackets_format=None,
     ):
         self.segmenter = segmenter
         self.tagger = tagger
@@ -16,3 +17,4 @@ class CFCore(object):
         self.tagger_model = tagger_model
         self.parser_model = parser_model
         self.trees = trees
+        self.brackets_format = brackets_format

@@ -10,4 +10,4 @@ import models
 import trainers
 
 
-__version__ = '0.2.0b'
+__version__ = '0.2.1b'

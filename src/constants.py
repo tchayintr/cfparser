@@ -1,5 +1,5 @@
 global __version
-__version__ = 'v0.2.0b'
+__version__ = 'v0.2.1b'
 
 # common
 
@@ -32,8 +32,15 @@ DEFAULT_DICT_PATH = 'data/dict/bigthai.dict'
 
 ### parsers
 
+BLANK_NONTERMINAL = ''
 ROOT_NONTERMINAL = 'S'
 UNUSED_NONTERMINAL = 'UNUSED'
+DELIMITER_PROB = '▁'            # U+2581 (Lower one eighth block)
+DELIMITER_PARSED_TREE = '▏'     # U+258F (Left one eighth block)
+
+### sample
+
+SAMPLE_FORMAT = '{}{}{}{}'
 
 # for character
 
@@ -60,3 +67,17 @@ JSON_FORMAT_EXTENSION = '.json'
 
 JSON_SOURCE_KEY = 'source'
 JSON_TARGET_KEY = 'target'
+
+# for app
+
+APP_DEFAULT_BRACKETS_FORMAT = '[]'
+APP_DEFAULT_DELIMITER_PARSED_TREE = '▏'     # U+258F (Left one eighth block)
+APP_DEFAULT_DELIMITER_PROB = '▁'            # U+2581 (Lower one eighth block)
+APP_DEFAULT_JSONIFY_KEY_RESULT = 'result'
+APP_DEFAULT_LOG_DIR = 'log'
+APP_DEFAULT_MODEL_PATH = 'models/main/cfparser-app.model'
+APP_DEFAULT_PCFG_FORMAT = 'pcfg'
+APP_DEFAULT_ROOT_NONTERMINAL = 'S'
+APP_DEFAULT_SAMPLE_FORMAT = '{}{}{}{}'
+APP_DEFAULT_UNUSED_NONTERMINAL = 'UNUSED'
+APP_DEFAULT_VITERBI_MODEL = 'viterbi'

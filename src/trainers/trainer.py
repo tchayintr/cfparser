@@ -249,6 +249,7 @@ class Trainer(object):
             tagger_model=self.args.tagging_model,
             parser_model=self.args.parsing_model,
             trees=self.trees,
+            brackets_format=self.args.brackets_format,
         )
         self.show_model_info()
 
