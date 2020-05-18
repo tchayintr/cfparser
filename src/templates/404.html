@@ -2,16 +2,13 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1,user-scalable=yes">
-<!--<link rel="stylesheet" href="css/main.css">-->
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
-<link rel="shortcut icon" href="{{url_for('static', filename='images/cf-single-icon.png')}}">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" type="text/css">
+    <meta name="viewport" content="initial-scale=1,user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/cfparser.ico')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" type="text/css">
 
     <title>CFParser</title>
-      <meta name="description" content="An open-source and web-service NLP analysis"/>
-      <link rel="icon" type="image/png" href="{{url_for('static', filename='images/cf-single-icon.png')}}" />
     <style>
       .banner--hero__content h1 span{
         color: white;
@@ -19,7 +16,7 @@
       .banner--hero{
         width: 100%;
         height: 100%;
-        background: #1c292f url("static/images/cfparser-bg.png") center center no-repeat;
+        background: #1c292f url("{{url_for('static', filename='images/cfparser-bg.png')}}") center center no-repeat;
         opacity: 0.925;
           min-height: 35em;
       }

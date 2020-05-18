@@ -124,8 +124,8 @@ class App(object):
     def __init__(self):
         '''Refers to CFCore class structures from CFCore.py'''
         self.core = None
-        if not os.path.exists(constants.LOG_DIR):
-            os.mkdir(constants.LOG_DIR)
+        if not os.path.exists(constants.APP_DEFAULT_LOG_DIR):
+            os.mkdir(constants.APP_DEFAULT_LOG_DIR)
 
 
     def report(self, message):
